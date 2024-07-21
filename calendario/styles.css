@@ -227,5 +227,6 @@ footer {
     #prevMonth, #nextMonth {
         font-size: 14px;
         padding: 6px;
+        margin-bottom: 40px;
     }
 }
