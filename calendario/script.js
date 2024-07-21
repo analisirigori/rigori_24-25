@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { date: 1, team: 'Pineto', logo: '../campionato/loghi/pineto.png' },
             { date: 8, team: 'Ternana', logo: '../campionato/loghi/ternana.png' },
             { date: 15, team: 'Arezzo', logo: '../campionato/loghi/arezzo.png' },
-            { date: 22, team: 'Perugia', logo: '../campionato/loghi/perugia.svg' }
+            { date: 22, team: 'Perugia', logo: '../campionato/loghi/perugia.png' }
         ] },
         { name: 'Gennaio', days: 31, matches: [
             { date: 5, team: 'Ascoli', logo: '../campionato/loghi/ascoli.png' },
