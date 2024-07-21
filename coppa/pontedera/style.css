@@ -34,6 +34,11 @@ nav ul {
     display: flex;
     justify-content: center; /* Centra il menu */
     gap: 15px; /* Spazio tra gli elementi del menu */
+    flex-wrap: wrap; /* Permette al menu di andare su più righe se necessario */
+}
+
+nav ul li {
+    flex: 1 1 auto; /* Permette ai link di ridimensionarsi in modo fluido */
 }
 
 nav ul li a {
@@ -87,12 +92,19 @@ h1 {
     position: relative;
     margin-top: auto; /* Push the goal to the bottom */
     margin-bottom: 15px; /* Aggiungi spazio sotto l'immagine della porta */
+    width: 100%; /* Assicurati che l'elemento goal sia largo quanto il contenitore principale */
+    max-width: 730px; /* Limita la larghezza massima della porta */
+}
+
+.goal img {
+    width: 100%;
+    height: auto; /* Mantiene le proporzioni dell'immagine */
 }
 
 .balls-container {
     position: absolute; /* Position relative to the goal image */
     top: 0;
-    left: 100;
+    left: 0;
     width: 100%;
     height: 100%;
 }
@@ -130,4 +142,53 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .logo img {
+        max-width: 80px; /* Riduce la dimensione del logo sui dispositivi più piccoli */
+    }
+
+    nav ul {
+        gap: 10px; /* Riduce lo spazio tra gli elementi del menu */
+    }
+
+    nav ul li a {
+        padding: 8px 15px; /* Riduce il padding dei link del menu */
+        font-size: 14px; /* Riduce la dimensione del testo dei link del menu */
+    }
+
+    main {
+        padding: 10px; /* Riduce il padding principale */
+    }
+
+    .goal {
+        margin-bottom: 30px; /* Aumenta lo spazio sotto l'immagine della porta */
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column; /* Dispone il menu in colonna sui dispositivi molto piccoli */
+        align-items: center; /* Centra gli elementi del menu */
+    }
+
+    nav ul li {
+        width: 100%; /* Fai sì che ogni elemento del menu prenda l'intera larghezza */
+        text-align: center; /* Centra il testo dei link del menu */
+    }
+
+    nav ul li a {
+        padding: 10px; /* Aumenta il padding dei link del menu per dispositivi molto piccoli */
+        font-size: 16px; /* Aumenta la dimensione del testo dei link del menu */
+    }
+
+    main {
+        margin-top: 10px; /* Riduce il margine sopra il main */
+    }
+
+    footer {
+        padding: 15px 0; /* Aumenta il padding del footer per dispositivi molto piccoli */
+    }
 }
