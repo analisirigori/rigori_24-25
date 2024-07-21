@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coppa - U.S. Pianese</title>
+    <title>Calendario Pianese</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,22 +15,24 @@
             <ul>
                 <li><a href="../index.html">Torna alla Home</a></li>
                 <li><a href="../campionato/campionato.html">Campionato</a></li>
-                <li><a href="coppa.html">Coppa</a></li>
-                <li><a href="../calendario/calendario.html">Calendario</a></li>
+                <li><a href="../coppa/coppa.html">Coppa</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <h1>Primo Turno</h1>
-        <div class="teams-container">
-            <a href="pontedera/pontedera.html" class="team-button">
-                <img src="../campionato/loghi/pontedera.png" alt="US Città di Pontedera">
-                <span>US Città di Pontedera</span>
-            </a>
+        <h1>Calendario Partite Pianese 2024-2025</h1>
+        <div class="calendar-container">
+            <button id="prevMonth">&lt;</button>
+            <div id="calendar" class="calendar">
+                <!-- Calendario generato da JavaScript -->
+            </div>
+            <button id="nextMonth">&gt;</button>
         </div>
     </main>
     <footer>
         <p>&copy; 2024 U.S. Pianese. Tutti i diritti riservati.</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
