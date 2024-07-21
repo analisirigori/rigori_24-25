@@ -1,9 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
     display: flex;
     flex-direction: column;
-   /* align-items: center; /* Center horizontally */
+    align-items: center;
     min-height: 100vh; /* Ensure body fills the viewport height */
     margin: 0;
+}
+
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.logo img {
+    max-width: 100px;
+    margin-bottom: 20px; /* Spazio tra il logo e il menu */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centra il menu */
+    gap: 15px; /* Spazio tra gli elementi del menu */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px; /* Aggiunge spazio interno ai link */
+    transition: background-color 0.3s, color 0.3s; /* Transizione per l'effetto hover */
+}
+
+nav ul li a:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px; /* Spazio aggiuntivo sotto l'header */
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    align-self: center;
+    color: #000000; /* Sostituisci con il colore sociale */
 }
 
 .container {
@@ -17,8 +76,9 @@ body {
 
 .relazione {
     flex-grow: 1; /* Take up available space */
-}
-.relazione p{
+    width: 100%;
+    text-align: justify;
+    margin-bottom: 20px;
     overflow-wrap: break-word;
 }
 
@@ -26,6 +86,7 @@ body {
     align-self: center;
     position: relative;
     margin-top: auto; /* Push the goal to the bottom */
+    margin-bottom: 15px; /* Aggiungi spazio sotto l'immagine della porta */
 }
 
 .balls-container {
@@ -61,17 +122,12 @@ body {
     pointer-events: none;  /* So that the number does not interfere with clicks */
 }
 
-.container {
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.relazione {
-    flex-grow: 1; /* Take up available space */
-    width: 100%;
-    text-align: justify;
-    margin-bottom: 20px;
-    overflow-wrap: normal;
+    bottom: 0;
 }

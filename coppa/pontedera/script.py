@@ -26,10 +26,10 @@ for ball in balls_data:
     </a>
     """
 
-with open("sito_web/coppa/pontedera/pontedera.html", "r") as file:
+with open("coppa/pontedera/pontedera.html", "r") as file:
     html_content = file.read()
 
-with open('sito_web/coppa/pontedera/relazione.txt', 'r') as file:
+with open('coppa/pontedera/relazione.txt', 'r') as file:
     text_content = file.read()
 # Trova il punto di inserimento
 insert_point = html_content.find('<div id="balls-container" class="balls-container">') + len('<div id="balls-container" class="balls-container">')
@@ -44,5 +44,5 @@ insert_point_text = new_html_content.find('<div class="relazione">') + len('<div
 new_html_content = new_html_content[:insert_point_text] + "<p>" + text_content + "</p>" + new_html_content[insert_point_text:]
 
 # Scrivi il nuovo contenuto HTML in un file
-with open("sito_web/coppa/pontedera/pontedera.html", "w") as file:
+with open("coppa/pontedera/pontedera.html", "w") as file:
     file.write(new_html_content)
