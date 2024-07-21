@@ -64,7 +64,97 @@ footer {
     bottom: 0;
 }
 
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.month {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #333;
+    padding: 10px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.week {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.day {
+    flex: 1;
+    border: 1px solid #ddd;
+    min-height: 100px;
+    position: relative;
+    padding: 10px; /* Aumenta il padding per più spazio interno */
+    box-sizing: border-box;
+    margin: 2px; /* Aggiungi margine tra i giorni */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.day.match {
+    background-color: #f9f9f9;
+}
+
+.date {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.team {
+    font-size: 12px;
+    position: relative;
+}
+
+.day img {
+    max-width: 50px;
+    margin-bottom: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Stile per i pulsanti delle frecce */
+#prevMonth, #nextMonth {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+#prevMonth:hover, #nextMonth:hover {
+    background-color: #555;
+}
+
 /* Media Queries */
+@media (max-width: 1024px) {
+    .week {
+        flex-wrap: wrap;
+    }
+
+    .day {
+        flex: 1 1 30%;
+    }
+
+    #prevMonth, #nextMonth {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
 @media (max-width: 768px) {
     .logo img {
         max-width: 80px; /* Riduce la dimensione del logo sui dispositivi più piccoli */
@@ -81,6 +171,21 @@ footer {
 
     main {
         padding: 10px; /* Riduce il padding principale */
+    }
+
+    .day {
+        font-size: 14px;
+        min-height: 80px;
+        flex: 1 1 45%;
+    }
+
+    .calendar-container {
+        flex-direction: column;
+    }
+
+    #prevMonth, #nextMonth {
+        font-size: 16px;
+        padding: 8px;
     }
 }
 
@@ -107,120 +212,20 @@ footer {
     footer {
         padding: 15px 0; /* Aumenta il padding del footer per dispositivi molto piccoli */
     }
-}
-
-
-.calendar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-}
-
-.month {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #333;
-    padding: 10px;
-    background-color: #fff;
-    width: 100%;
-}
-
-/* Aggiungi o modifica il seguente codice nel tuo file styles.css */
-
-/* Stile per la settimana */
-.week {
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Stile per il giorno */
-.day {
-    flex: 1;
-    border: 1px solid #ddd;
-    min-height: 100px;
-    position: relative;
-    padding: 10px; /* Aumenta il padding per più spazio interno */
-    box-sizing: border-box;
-    margin: 2px; /* Aggiungi margine tra i giorni */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Stile per il contenitore del calendario */
-.calendar-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    max-width: 90%; /* Massima larghezza per il contenitore */
-    margin: 0 auto; /* Centra il contenitore */
-}
-
-.month {
-    width: 100%; /* Occupare tutta la larghezza disponibile */
-}
-
-.day.match {
-    background-color: #f9f9f9;
-}
-
-.date {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.team {
-    font-size: 12px;
-    position: relative;
-}
-
-.day img {
-    max-width: 50px;
-    margin-bottom: 5px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .calendar {
-        width: 100%;
-    }
-
-    .month {
-        width: 100%;
-    }
 
     .day {
-        font-size: 14px;
-        min-height: 80px;
+        font-size: 12px;
+        min-height: 60px;
+        flex: 1 1 100%;
     }
-}
 
-/* Aggiungi il seguente codice al tuo file styles.css */
+    .calendar-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-/* Stile per il contenitore del calendario */
-.calendar-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-/* Stile per i pulsanti delle frecce */
-#prevMonth, #nextMonth {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    transition: background-color 0.3s;
-}
-
-#prevMonth:hover, #nextMonth:hover {
-    background-color: #555;
+    #prevMonth, #nextMonth {
+        font-size: 14px;
+        padding: 6px;
+    }
 }
