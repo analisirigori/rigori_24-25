@@ -1,0 +1,77 @@
+body {
+    display: flex;
+    flex-direction: column;
+   /* align-items: center; /* Center horizontally */
+    min-height: 100vh; /* Ensure body fills the viewport height */
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.relazione {
+    flex-grow: 1; /* Take up available space */
+}
+.relazione p{
+    overflow-wrap: break-word;
+}
+
+.goal {
+    align-self: center;
+    position: relative;
+    margin-top: auto; /* Push the goal to the bottom */
+}
+
+.balls-container {
+    position: absolute; /* Position relative to the goal image */
+    top: 0;
+    left: 100;
+    width: 100%;
+    height: 100%;
+}
+
+.ball-link {
+    position: absolute; /* Position balls relative to the container */
+}
+
+.ball {
+    position: relative;
+    display: inline-block;
+}
+
+.ball img {
+    width: 30px;  /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+}
+
+.ball-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 20px;  /* Adjust the size as needed */
+    font-weight: bold;
+    pointer-events: none;  /* So that the number does not interfere with clicks */
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.relazione {
+    flex-grow: 1; /* Take up available space */
+    width: 100%;
+    text-align: justify;
+    margin-bottom: 20px;
+    overflow-wrap: normal;
+}
