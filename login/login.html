@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - U.S. Pianese</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Define valid credentials
+        const validCredentials = [
+            { username: 'user1', password: 'pass1' },
+            { username: 'user2', password: 'pass2' }
+        ];
+
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function login(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+
+            // Check if the entered credentials are valid
+            const isValid = validCredentials.some(credentials =>
+                credentials.username === usernameInput && credentials.password === passwordInput
+            );
+
+            if (isValid) {
+                // Set a flag in session storage to indicate that the user is logged in
+                sessionStorage.setItem('isAuthenticated', 'true');
+
+                // Get the redirect URL from the query parameter
+                const redirectUrl = getQueryParameter('redirect') || 'sito_web/index.html';
+                
+                window.location.href = redirectUrl; // Redirect to the chosen page
+            } else {
+                alert('Nome utente o password non validi. Riprova.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../campionato/loghi/logo.png" alt="Logo Pianese">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Torna alla Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Accedi</h1>
+        <form class="login-form" onsubmit="login(event)">
+            <div class="form-group">
+                <label for="username">Nome utente</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Accedi</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Fabio Rossi e Umberto Di Giacomo Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>

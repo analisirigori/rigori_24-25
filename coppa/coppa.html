@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coppa - U.S. Pianese</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // Check if the user is authenticated
+        window.onload = function() {
+            const isAuthenticated = sessionStorage.getItem('isAuthenticated');
+            if (!isAuthenticated) {
+                // Redirect to login page if not authenticated
+                window.location.href = '../login/login.html';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -30,7 +40,7 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 U.S. Pianese. Tutti i diritti riservati.</p>
+        <p>&copy; 2024 Fabio Rossi e Umberto Di Giacomo Tutti i diritti riservati.</p>
     </footer>
 </body>
 </html>
