@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Città di Pontedera - Giocatori</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Check if the user is authenticated
+        window.onload = function() {
+            const isAuthenticated = sessionStorage.getItem('isAuthenticated');
+            if (!isAuthenticated) {
+                // Redirect to login page if not authenticated
+                window.location.href = '../../../login/login.html?redirect=../coppa/squadre/pontedera/pontedera.html';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../../../campionato/loghi/logo.png" alt="Logo Pianese">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../../../index.html">Torna alla Home</a></li>
+                <li><a href="../../../campionato/campionato.html">Campionato</a></li>
+                <li><a href="../../coppa.html">Coppa</a></li>
+                <li><a href="../../../calendario/calendario.html">Calendario</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="logosquadra">
+            <img src="../../../campionato/loghi/pontedera.png" alt="Logo Pontedera" style="width: 8%;">
+        </div>
+        <h1>Giocatori US Città di Pontedera</h1>
+        <div class="players-container">
+            <a href="giocatore1/giocatore.html" class="player-button">Giocatore 1</a>
+            <a href="giocatori/giocatore2.html" class="player-button">Giocatore 2</a>
+            <a href="giocatori/giocatore3.html" class="player-button">Giocatore 3</a>
+            <a href="giocatori/giocatore4.html" class="player-button">Giocatore 4</a>
+            <a href="giocatori/giocatore5.html" class="player-button">Giocatore 5</a>
+            <a href="giocatori/giocatore6.html" class="player-button">Giocatore 6</a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Fabio Rossi e Umberto Di Giacomo Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>

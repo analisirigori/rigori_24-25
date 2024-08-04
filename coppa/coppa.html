@@ -11,7 +11,7 @@
             const isAuthenticated = sessionStorage.getItem('isAuthenticated');
             if (!isAuthenticated) {
                 // Redirect to login page if not authenticated
-                window.location.href = '../login/login.html';
+                window.location.href = '../login/login.html?redirect=../coppa/coppa.html';
             }
         }
     </script>
@@ -33,7 +33,7 @@
     <main>
         <h1>Primo Turno</h1>
         <div class="teams-container">
-            <a href="pontedera/pontedera.html" class="team-button">
+            <a href="squadre/pontedera/pontedera.html" class="team-button">
                 <img src="../campionato/loghi/pontedera.png" alt="US Città di Pontedera">
                 <span>US Città di Pontedera</span>
             </a>
