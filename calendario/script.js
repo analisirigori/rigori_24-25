@@ -4,11 +4,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextMonthButton = document.getElementById('nextMonth');
 
     const months = [
-        { name: 'Agosto', days: 31, matches: [{ date: 25, team: 'Perugia', logo: '../campionato/loghi/perugia.png' }] },
+        { name: 'Agosto', days: 31, matches: [
+            { date: 10, team: 'Pontedera - Primo turno Coppa', logo: '../campionato/loghi/pontedera.png' },
+            { date: 24, team: 'Perugia', logo: '../campionato/loghi/perugia.png' }
+        ] },
         { name: 'Settembre', days: 30, matches: [
-            { date: 1, team: 'Ascoli', logo: '../campionato/loghi/ascoli.png' },
+            { date: 2, team: 'Ascoli', logo: '../campionato/loghi/ascoli.png' },
             { date: 8, team: 'Campobasso', logo: '../campionato/loghi/campobasso.png' },
-            { date: 15, team: 'Pescara', logo: '../campionato/loghi/pescara.png' },
+            { date: 16, team: 'Pescara', logo: '../campionato/loghi/pescara.png' },
             { date: 22, team: 'Virtus Entella', logo: '../campionato/loghi/entella.png' },
             { date: 25, team: 'Lucchese', logo: '../campionato/loghi/lucchese.png' },
             { date: 29, team: 'Sestri Levante', logo: '../campionato/loghi/sestrilevante.png' }
