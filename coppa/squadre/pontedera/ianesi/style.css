@@ -182,7 +182,7 @@ footer {
         top: 0;
         left: 0;
         width: 90%;
-        height: 80%;
+        height: 90%;
     }
 }
 
@@ -211,18 +211,21 @@ footer {
     }
 
     .ball {
-        width: 24px;  /* Further adjust ball size for very small screens */
-        height: 24px; /* Further adjust ball size for very small screens */
+        width: 18px;  /* Further adjust ball size for very small screens */
+        height: 18px; /* Further adjust ball size for very small screens */
     }
 
     .ball-number {
-        font-size: 17.6px; /* Further adjust number size for very small screens */
+        font-size: 13px; /* Further adjust number size for very small screens */
     }
     .balls-container {
         position: absolute; /* Position relative to the goal image */
         top: 0;
         left: 0;
         width: 90%;
-        height: 85%;
+        height: 84%;
+    }
+    .goal {
+        margin-bottom: 40px; /* Aumenta lo spazio sotto l'immagine della porta */
     }
 }
