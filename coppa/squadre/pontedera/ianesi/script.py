@@ -20,7 +20,7 @@ for ball in balls_data:
     if ball['Esito']==1:
         balls_html += f"""
         <a href="{ball['Link']}" class="ball-link{i}">
-            <div class="ball" style="position: absolute; top: {ball['Top']/10*305}px; left: {ball['Left']/30*700}px;">
+            <div class="ball" style="position: absolute; top: {ball['Top']/10*100}%; left: {ball['Left']/30*100}%;">
                 <img src="../../../../images/football.png" alt="Football">
                 <span class="ball-number" style="color: green;">{i}</span>
             </div>
@@ -29,7 +29,7 @@ for ball in balls_data:
     else:
         balls_html += f"""
         <a href="{ball['Link']}" class="ball-link{i}">
-            <div class="ball" style="position: absolute; top: {ball['Top']/10*305}px; left: {ball['Left']/30*700}px;">
+            <div class="ball" style="position: absolute; top: {ball['Top']/10*100}%; left: {ball['Left']/30*100}%;">
                 <img src="../../images/football.png" alt="Football">
                 <span class="ball-number" style="color: red;">{i}</span>
             </div>

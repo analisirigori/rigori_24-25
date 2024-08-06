@@ -105,8 +105,8 @@ h1 {
     position: absolute; /* Position relative to the goal image */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
 }
 
 .ball-link {
@@ -114,13 +114,15 @@ h1 {
 }
 
 .ball {
-    position: relative;
+    position: absolute; /* Position balls relative to the container */
     display: inline-block;
+    width: 30px;  /* Dynamic size relative to viewport width */
+    height: 30px; /* Dynamic size relative to viewport width */
 }
 
 .ball img {
-    width: 30px;  /* Adjust as needed */
-    height: 30px; /* Adjust as needed */
+    width: 100%;  /* Ensure ball image fits the container */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .ball-number {
@@ -129,7 +131,7 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     color: red;
-    font-size: 20px;  /* Adjust the size as needed */
+    font-size: 22px;  /* Dynamic font size relative to viewport width */
     font-weight: bold;
     pointer-events: none;  /* So that the number does not interfere with clicks */
 }
@@ -166,6 +168,22 @@ footer {
     .goal {
         margin-bottom: 30px; /* Aumenta lo spazio sotto l'immagine della porta */
     }
+
+    .ball {
+        width: 5vw;  /* Adjust ball size for smaller screens */
+        height: 5vw; /* Adjust ball size for smaller screens */
+    }
+
+    .ball-number {
+        font-size: 2vw; /* Adjust number size for smaller screens */
+    }
+    .balls-container {
+        position: absolute; /* Position relative to the goal image */
+        top: 0;
+        left: 0;
+        width: 90%;
+        height: 80%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -190,5 +208,21 @@ footer {
 
     footer {
         padding: 15px 0; /* Aumenta il padding del footer per dispositivi molto piccoli */
+    }
+
+    .ball {
+        width: 6vw;  /* Further adjust ball size for very small screens */
+        height: 6vw; /* Further adjust ball size for very small screens */
+    }
+
+    .ball-number {
+        font-size: 2.5vw; /* Further adjust number size for very small screens */
+    }
+    .balls-container {
+        position: absolute; /* Position relative to the goal image */
+        top: 0;
+        left: 0;
+        width: 90%;
+        height: 80%;
     }
 }
