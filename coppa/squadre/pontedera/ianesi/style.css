@@ -170,12 +170,12 @@ footer {
     }
 
     .ball {
-        width: 5vw;  /* Adjust ball size for smaller screens */
-        height: 5vw; /* Adjust ball size for smaller screens */
+        width: 24px;  /* Adjust ball size for smaller screens */
+        height: 24px; /* Adjust ball size for smaller screens */
     }
 
     .ball-number {
-        font-size: 2vw; /* Adjust number size for smaller screens */
+        font-size: 17.6px; /* Adjust number size for smaller screens */
     }
     .balls-container {
         position: absolute; /* Position relative to the goal image */
@@ -211,18 +211,18 @@ footer {
     }
 
     .ball {
-        width: 6vw;  /* Further adjust ball size for very small screens */
-        height: 6vw; /* Further adjust ball size for very small screens */
+        width: 24px;  /* Further adjust ball size for very small screens */
+        height: 24px; /* Further adjust ball size for very small screens */
     }
 
     .ball-number {
-        font-size: 2.5vw; /* Further adjust number size for very small screens */
+        font-size: 17.6px; /* Further adjust number size for very small screens */
     }
     .balls-container {
         position: absolute; /* Position relative to the goal image */
         top: 0;
         left: 0;
         width: 90%;
-        height: 80%;
+        height: 70%;
     }
 }
