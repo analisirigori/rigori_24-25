@@ -9,7 +9,7 @@ class Ball(TypedDict):
     Left: int
 i = 0
 
-df = pd.read_excel('/Users/reus3111/Clip_Pianese/sito_web/coppa/pontedera/Rigori_Pontedera.xlsx')
+df = pd.read_excel('/Users/reus3111/Clip_Pianese/sito_web/coppa/squadre/pontedera/ianesi/Rigori_Ianesi.xlsx')
 balls_data = df.to_dict(orient='records')
 
 
@@ -17,19 +17,29 @@ balls_data = df.to_dict(orient='records')
 balls_html = ""
 for ball in balls_data:
     i+=1
-    balls_html += f"""
-    <a href="{ball['Link']}" class="ball-link{i}">
-        <div class="ball" style="position: absolute; top: {ball['Top']}px; left: {ball['Left']}px;">
-            <img src="../../images/football.png" alt="Football">
-            <span class="ball-number">{i}</span>
-        </div>
-    </a>
-    """
+    if ball['Esito']==1:
+        balls_html += f"""
+        <a href="{ball['Link']}" class="ball-link{i}">
+            <div class="ball" style="position: absolute; top: {ball['Top']/10*305}px; left: {ball['Left']/30*700}px;">
+                <img src="../../../../images/football.png" alt="Football">
+                <span class="ball-number" style="color: green;">{i}</span>
+            </div>
+        </a>
+        """
+    else:
+        balls_html += f"""
+        <a href="{ball['Link']}" class="ball-link{i}">
+            <div class="ball" style="position: absolute; top: {ball['Top']/10*305}px; left: {ball['Left']/30*700}px;">
+                <img src="../../images/football.png" alt="Football">
+                <span class="ball-number" style="color: red;">{i}</span>
+            </div>
+        </a>
+        """
 
-with open("coppa/pontedera/pontedera.html", "r") as file:
+with open("coppa/squadre/pontedera/ianesi/ianesi.html", "r") as file:
     html_content = file.read()
 
-with open('coppa/pontedera/relazione.txt', 'r') as file:
+with open('coppa/squadre/pontedera/ianesi/relazione.txt', 'r') as file:
     text_content = file.read()
 # Trova il punto di inserimento
 insert_point = html_content.find('<div id="balls-container" class="balls-container">') + len('<div id="balls-container" class="balls-container">')
@@ -44,5 +54,5 @@ insert_point_text = new_html_content.find('<div class="relazione">') + len('<div
 new_html_content = new_html_content[:insert_point_text] + "<p>" + text_content + "</p>" + new_html_content[insert_point_text:]
 
 # Scrivi il nuovo contenuto HTML in un file
-with open("coppa/pontedera/pontedera.html", "w") as file:
+with open("coppa/squadre/pontedera/ianesi/ianesi.html", "w") as file:
     file.write(new_html_content)
