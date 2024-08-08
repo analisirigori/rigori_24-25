@@ -9,7 +9,7 @@ class Ball(TypedDict):
     Left: int
 i = 0
 
-df = pd.read_excel('/Users/reus3111/Clip_Pianese/sito_web/coppa/squadre/pontedera/ianesi/Rigori_Ianesi.xlsx')
+df = pd.read_excel('/Users/reus3111/Clip_Pianese/sito_web/coppa/squadre/pontedera/ladinetti/rigori_ladinetti.xlsx')
 balls_data = df.to_dict(orient='records')
 
 
@@ -48,7 +48,7 @@ for ball in balls_data:
         """
     
 
-with open("coppa/squadre/pontedera/ianesi/ianesi.html", "r") as file:
+with open("coppa/squadre/pontedera/ladinetti/ladinetti.html", "r") as file:
     html_content = file.read()
 
 # Trova il punto di inserimento
@@ -64,5 +64,5 @@ insert_point_text = new_html_content.find('<div class="list_of_penalties">') + l
 new_html_content = new_html_content[:insert_point_text] + list_html + new_html_content[insert_point_text:]
 
 # Scrivi il nuovo contenuto HTML in un file
-with open("coppa/squadre/pontedera/ianesi/ianesi.html", "w") as file:
+with open("coppa/squadre/pontedera/ladinetti/ladinetti.html", "w") as file:
     file.write(new_html_content)
