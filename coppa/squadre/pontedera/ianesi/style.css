@@ -168,7 +168,9 @@ footer {
     .goal {
         margin-bottom: 30px; /* Aumenta lo spazio sotto l'immagine della porta */
     }
-
+    .relazione{
+        margin-bottom: 40px;
+    }
     .ball {
         width: 24px;  /* Adjust ball size for smaller screens */
         height: 24px; /* Adjust ball size for smaller screens */
@@ -227,5 +229,9 @@ footer {
     }
     .goal {
         margin-bottom: 40px; /* Aumenta lo spazio sotto l'immagine della porta */
+    }
+    
+    .relazione{
+        margin-bottom: 40px;
     }
 }
