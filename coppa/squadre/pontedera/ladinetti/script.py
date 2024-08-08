@@ -20,7 +20,7 @@ for ball in balls_data:
     i+=1
     if ball['Esito']==1:
         balls_html += f"""
-        <a href="{ball['Link']}" class="ball-link{i}">
+        <a href="{ball['Link']}" target="_blank" class="ball-link{i}">
             <div class="ball" style="position: absolute; top: {ball['Top']/10*100}%; left: {ball['Left']/30*100}%;">
                 <img src="../../../../images/football.png" alt="Football">
                 <span class="ball-number" style="color: black;">{i}</span>
@@ -29,12 +29,12 @@ for ball in balls_data:
         """
         list_html+=f"""
         <div class="relazione" style="flex-wrap: wrap;">
-            {i}) Partita: {ball['Partita']}, rigore calciato al minuto: {ball['Minuto']} e trasformato, il risultato della partita al momento del tiro era: {ball['Risultato']}. <a href="{ball['Link']}" class="ball-link{i}" style="text-decoration: none;">Video</a>
+            {i}) Partita: {ball['Partita']}, rigore calciato al minuto: {ball['Minuto']} e trasformato, il risultato della partita al momento del tiro era: {ball['Risultato']}. <a href="{ball['Link']}" target="_blank" class="ball-link{i}" style="text-decoration: none;">Video</a>
         </div>
         """
     else:
         balls_html += f"""
-        <a href="{ball['Link']}" class="ball-link{i}">
+        <a href="{ball['Link']}" target="_blank" class="ball-link{i}">
             <div class="ball" style="position: absolute; top: {ball['Top']/10*100}%; left: {ball['Left']/30*100}%;">
                 <img src="../../../../images/missed.png" alt="Football">
                 <span class="ball-number" style="color: black;">{i}</span>
@@ -43,7 +43,7 @@ for ball in balls_data:
         """
         list_html+=f"""
         <div class="relazione" style="flex-wrap: wrap;">
-            {i}) Partita: {ball['Partita']}, rigore calciato al minuto: {ball['Minuto']} e sbagliato, il risultato della partita al momento del tiro era: {ball['Risultato']}. <a href="{ball['Link']}" class="ball-link{i}" style="text-decoration: none;">Video</a>
+            {i}) Partita: {ball['Partita']}, rigore calciato al minuto: {ball['Minuto']} e sbagliato, il risultato della partita al momento del tiro era: {ball['Risultato']}. <a href="{ball['Link']}" target="_blank" class="ball-link{i}" style="text-decoration: none;">Video</a>
         </div>
         """
     
