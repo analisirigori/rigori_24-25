@@ -63,13 +63,51 @@ footer {
     width: 100%;
     bottom: 0;
 }
+/* Contenitore per i profili */
+.profiles-container {
+    display: flex;
+    justify-content: center; /* Centra i profili orizzontalmente */
+    align-items: center; /* Allinea i profili verticalmente */
+    gap: 30px; /* Spazio tra i due profili */
+    margin-top: 20px; /* Spazio sopra il contenitore dei profili */
+}
+
+/* Stili generali per il logo LinkedIn e il testo */
+.linkedin-profile, .CV {
+    display: flex;
+    align-items: center; /* Allinea verticalmente il contenuto al centro */
+    gap: 8px; /* Spazio tra l'icona e il testo */
+}
+
+.linkedin-icon, .logo-icon {
+    width: 24px; /* Dimensione dell'icona */
+    height: auto; /* Mantiene le proporzioni dell'icona */
+}
+
+.linkedin-text, .logo-text {
+    text-decoration: none;
+    color: black;
+}
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .logo img {
-        max-width: 80px; /* Riduce la dimensione del logo sui dispositivi più piccoli */
+    .personal {
+        max-width: 80px; /* Riduce la dimensione del logo principale sui dispositivi più piccoli */
     }
 
+    .linkedin-icon, .logo-icon {
+        width: 20px; /* Riduce la dimensione delle icone su dispositivi più piccoli */
+    }
+
+    .linkedin-text, .logo-text {
+        font-size: 14px; /* Riduce la dimensione del testo su dispositivi più piccoli */
+    }
+
+    .profiles-container {
+        flex-direction: column; /* Dispone i profili in colonna su dispositivi più piccoli */
+        align-items: center; /* Centra i profili */
+        gap: 15px; /* Riduce lo spazio tra i profili */
+    }
     nav ul {
         gap: 10px; /* Riduce lo spazio tra gli elementi del menu */
     }
@@ -85,6 +123,21 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .personal {
+        max-width: 60px; /* Ulteriore riduzione della dimensione del logo principale sui dispositivi molto piccoli */
+    }
+
+    .linkedin-icon, .logo-icon {
+        width: 18px; /* Ulteriore riduzione dell'icona su dispositivi molto piccoli */
+    }
+
+    .linkedin-text, .logo-text {
+        font-size: 12px; /* Riduce ulteriormente la dimensione del testo su dispositivi molto piccoli */
+    }
+
+    .profiles-container {
+        gap: 10px; /* Riduce ulteriormente lo spazio tra i profili */
+    }
     nav ul {
         flex-direction: column; /* Dispone il menu in colonna sui dispositivi molto piccoli */
         align-items: center; /* Centra gli elementi del menu */
