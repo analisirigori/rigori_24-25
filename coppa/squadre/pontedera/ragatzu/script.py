@@ -15,22 +15,46 @@ balls_data = df.to_dict(orient='records')
 
 
 balls_html = ""
-list_html = ""
+list_html = """
+<table class="penalty-table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 8px;">#</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Partita</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Minuto</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Esito</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Risultato</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Video</th>
+        </tr>
+    </thead>
+    <tbody>
+"""
 grafici_html = ""
-sinistra = 0
-sinistra_gol = 0
-destra = 0
-destra_gol = 0
+chiudere = 0
+chiudere_gol = 0
+aprire = 0
+aprire_gol = 0
 for ball in balls_data:
     i+=1
-    if ball['Left']<=15:
-        sinistra+=1
-        if ball['Esito']==1:
-            sinistra_gol += 1
+    if ball['Piede']=="Destro":
+        if ball['Left']<=15:
+            chiudere+=1
+            if ball['Esito']==1:
+                chiudere_gol += 1
+        else:
+            aprire += 1
+            if ball['Esito']==1:
+                aprire_gol += 1
     else:
-        destra += 1
-        if ball['Esito']==1:
-            destra_gol += 1
+        if ball['Left']<=15:
+            aprire+=1
+            if ball['Esito']==1:
+                aprire_gol += 1
+        else:
+            chiudere += 1
+            if ball['Esito']==1:
+                chiudere_gol += 1
+    
             
     if ball['Esito']==1:
         balls_html += f"""
@@ -41,11 +65,6 @@ for ball in balls_data:
             </div>
         </a>
         """
-        list_html+=f"""
-        <div class="relazione" style="flex-wrap: wrap;">
-            {i}) Partita: {ball['Partita']}, rigore calciato al minuto: {ball['Minuto']} e trasformato, il risultato della partita al momento del tiro era: {ball['Risultato']}. <a href="{ball['Link']}" target="_blank" class="ball-link{i}" style="text-decoration: none;">Video</a>
-        </div>
-        """
     else:
         balls_html += f"""
         <a href="{ball['Link']}" target="_blank" class="ball-link{i}">
@@ -55,11 +74,25 @@ for ball in balls_data:
             </div>
         </a>
         """
-        list_html+=f"""
-        <div class="relazione" style="flex-wrap: wrap;">
-            {i}) Partita: {ball['Partita']}, rigore calciato al minuto: {ball['Minuto']} e sbagliato, il risultato della partita al momento del tiro era: {ball['Risultato']}. <a href="{ball['Link']}" target="_blank" class="ball-link{i}" style="text-decoration: none;">Video</a>
-        </div>
-        """
+        
+for i, ball in enumerate(balls_data, start=1):
+    esito_color = '#4CAF50' if ball['Esito'] == 1 else '#F44336'
+    esito_text = 'Trasformato' if ball['Esito'] == 1 else 'Sbagliato'
+
+    list_html += f"""
+    <tr>
+        <td data-label="#" style="border: 1px solid #ddd; padding: 8px;">{i}</td>
+        <td data-label="Partita" style="border: 1px solid #ddd; padding: 8px;">{ball['Partita']}</td>
+        <td data-label="Minuto" style="border: 1px solid #ddd; padding: 8px;">{ball['Minuto']}</td>
+        <td data-label="Esito" style="border: 1px solid #ddd; padding: 8px; background-color: {esito_color}; color: #fff;">{esito_text}</td>
+        <td data-label="Risultato" style="border: 1px solid #ddd; padding: 8px;">{ball['Risultato']}</td>
+        <td data-label="Video" style="border: 1px solid #ddd; padding: 8px;">
+            <a href="{ball['Link']}" target="_blank" style="text-decoration: none; color: #000;">link</a>
+        </td>
+    </tr>
+    """
+
+list_html += "</tbody></table>"
 
 grafici_html = f"""
 <div class="grafici-container" style="display: flex; justify-content: space-around; margin-top: 50px; margin-bottom: 100px">
@@ -70,26 +103,27 @@ grafici_html = f"""
 </div>
 <div class="grafici-container" style="display: flex; justify-content: space-around; margin-top: 50px; margin-bottom: 100px">
     <div>
-        <h3>Rigori a Sinistra</h3>
-        <canvas id="graficoSinistra"></canvas>
+        <h3>Rigori ad Aprire</h3>
+        <canvas id="graficoAprire"></canvas>
     </div>
     <div>
-        <h3>Rigori a Destra</h3>
-        <canvas id="graficoDestra"></canvas>
+        <h3>Rigori a Chiudere</h3>
+        <canvas id="graficoChiudere"></canvas>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
 <script>
     var ctxTotal = document.getElementById('graficoTotale').getContext('2d');
     var graficoTotal = new Chart(ctxTotal, {{
         type: 'pie',
         data: {{
-            labels: ['Sinistra', 'Destra'],
+            labels: ['Chiudere', 'Aprire'],
             datasets: [{{
                 label: 'Rigori Calciati',
-                data: [{sinistra}, {destra}],
-                backgroundColor: ['#4CAF50', '##0000FF'],
-                hoverOffset: 4
+                data: [{chiudere}, {aprire}],
+                backgroundColor: ['#4CAF50', '#0000FF'],
             }}]
         }},
         options: {{
@@ -99,27 +133,32 @@ grafici_html = f"""
                     position: 'top',
                 }},
                 tooltip: {{
-                    callbacks: {{
-                        label: function(tooltipItem) {{
-                            var label = tooltipItem.label || '';
-                            var value = tooltipItem.raw || 0;
-                            var total = {sinistra+destra};
-                            var percent = Math.round((value / total) * 100);
-                            return label + ': ' + value + ' (' + percent + '%)';
-                        }}
+                    enabled : false
+                }},
+                datalabels: {{
+                    color: '#fff',
+                    font: {{
+                        size: 18,  // Imposta la dimensione del font delle etichette
+                        weight: 'bold' // Puoi anche aggiungere altre proprietà come il peso del font
+                    }},
+                    formatter: function(value, context) {{
+                        var total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                        var percent = Math.round((value / total) * 100);
+                        return value + ' (' + percent + '%)';
                     }}
                 }}
             }}
-        }}
+        }},
+        plugins: [ChartDataLabels]
     }});
-    var ctxSinistra = document.getElementById('graficoSinistra').getContext('2d');
-    var graficoSinistra = new Chart(ctxSinistra, {{
+    var ctxAprire = document.getElementById('graficoAprire').getContext('2d');
+    var graficoAprire = new Chart(ctxAprire, {{
         type: 'pie',
         data: {{
             labels: ['Gol', 'Sbagliati'],
             datasets: [{{
-                label: 'Rigori a Sinistra',
-                data: [{sinistra_gol}, {sinistra - sinistra_gol}],
+                label: 'Rigori ad Aprire',
+                data: [{aprire_gol}, {aprire - aprire_gol}],
                 backgroundColor: ['#4CAF50', '#F44336'],
                 hoverOffset: 4
             }}]
@@ -131,28 +170,33 @@ grafici_html = f"""
                     position: 'top',
                 }},
                 tooltip: {{
-                    callbacks: {{
-                        label: function(tooltipItem) {{
-                            var label = tooltipItem.label || '';
-                            var value = tooltipItem.raw || 0;
-                            var total = {sinistra};
-                            var percent = Math.round((value / total) * 100);
-                            return label + ': ' + value + ' (' + percent + '%)';
-                        }}
+                    enabled : false
+                }},
+                datalabels: {{
+                    color: '#fff',
+                    font: {{
+                        size: 18,  // Imposta la dimensione del font delle etichette
+                        weight: 'bold' // Puoi anche aggiungere altre proprietà come il peso del font
+                    }},
+                    formatter: function(value, context) {{
+                        var total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                        var percent = Math.round((value / total) * 100);
+                        return value + ' (' + percent + '%)';
                     }}
                 }}
             }}
-        }}
+        }},
+        plugins: [ChartDataLabels]
     }});
 
-    var ctxDestra = document.getElementById('graficoDestra').getContext('2d');
-    var graficoDestra = new Chart(ctxDestra, {{
+    var ctxChiudere = document.getElementById('graficoChiudere').getContext('2d');
+    var graficoChiudere = new Chart(ctxChiudere, {{
         type: 'pie',
         data: {{
             labels: ['Gol', 'Sbagliati'],
             datasets: [{{
-                label: 'Rigori a Destra',
-                data: [{destra_gol}, {destra - destra_gol}],
+                label: 'Rigori a Chiudere',
+                data: [{chiudere_gol}, {chiudere - chiudere_gol}],
                 backgroundColor: ['#4CAF50', '#F44336'],
                 hoverOffset: 4
             }}]
@@ -164,18 +208,23 @@ grafici_html = f"""
                     position: 'top',
                 }},
                 tooltip: {{
-                    callbacks: {{
-                        label: function(tooltipItem) {{
-                            var label = tooltipItem.label || '';
-                            var value = tooltipItem.raw || 0;
-                            var total = {destra};
-                            var percent = Math.round((value / total) * 100);
-                            return label + ': ' + value + ' (' + percent + '%)';
-                        }}
+                    enabled : false
+                }},
+                datalabels: {{
+                    color: '#fff',
+                    font: {{
+                        size: 18,  // Imposta la dimensione del font delle etichette
+                        weight: 'bold' // Puoi anche aggiungere altre proprietà come il peso del font
+                    }},
+                    formatter: function(value, context) {{
+                        var total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                        var percent = Math.round((value / total) * 100);
+                        return value + ' (' + percent + '%)';
                     }}
                 }}
             }}
-        }}
+        }},
+        plugins: [ChartDataLabels]
     }});
 </script>
 """

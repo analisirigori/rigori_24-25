@@ -140,6 +140,24 @@ h1 {
     width: 400px; /* Riduci ulteriormente la dimensione dei grafici per schermi molto piccoli */
 }
 
+.penalty-table {
+    width: 100%;
+    max-width: 800px; /* Limita la larghezza massima della tabella */
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 1rem; /* Dimensione del testo normale */
+}
+
+.penalty-table th, .penalty-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.penalty-table tr:hover {
+    background-color: #f1f1f1;
+}
+
 footer {
     background-color: #000;
     color: #fff;
@@ -152,7 +170,14 @@ footer {
 
 /* Media Queries */
 @media (max-width: 768px) {
-    
+    .penalty-table {
+        font-size: 0.9rem; /* Riduci leggermente la dimensione del testo */
+    }
+
+    .penalty-table th, .penalty-table td {
+        padding: 8px; /* Riduci il padding delle celle */
+    }
+
     .logo img {
         max-width: 80px; /* Riduce la dimensione del logo sui dispositivi più piccoli */
     }
@@ -194,6 +219,14 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .penalty-table {
+        font-size: 0.8rem; /* Riduci ulteriormente la dimensione del testo */
+    }
+
+    .penalty-table th, .penalty-table td {
+        padding: 6px; /* Riduci ulteriormente il padding delle celle */
+    }
+    
     .grafici-container div {
         width: 200px; /* Riduci ulteriormente la dimensione dei grafici per schermi molto piccoli */
     }
