@@ -136,6 +136,10 @@ h1 {
     pointer-events: none;  /* So that the number does not interfere with clicks */
 }
 
+.grafici-container div {
+    width: 400px; /* Riduci ulteriormente la dimensione dei grafici per schermi molto piccoli */
+}
+
 footer {
     background-color: #000;
     color: #fff;
@@ -148,6 +152,7 @@ footer {
 
 /* Media Queries */
 @media (max-width: 768px) {
+    
     .logo img {
         max-width: 80px; /* Riduce la dimensione del logo sui dispositivi più piccoli */
     }
@@ -189,6 +194,9 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .grafici-container div {
+        width: 200px; /* Riduci ulteriormente la dimensione dei grafici per schermi molto piccoli */
+    }
     nav ul {
         flex-direction: column; /* Dispone il menu in colonna sui dispositivi molto piccoli */
         align-items: center; /* Centra gli elementi del menu */

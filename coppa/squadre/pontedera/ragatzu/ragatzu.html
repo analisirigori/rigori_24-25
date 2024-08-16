@@ -150,6 +150,12 @@
         
         
         
+        
+        
+        
+        
+        
+        
     
                 <!-- Palloni -->
             </div>
@@ -216,6 +222,127 @@
         </div>
         
         
+        </div>
+        <div class="grafici">
+<div class="grafici-container" style="display: flex; justify-content: space-around; margin-top: 50px; margin-bottom: 100px">
+    <div>
+    <h3> Rigori Calciati </h3>
+    <canvas id="graficoTotale"></canvas>
+    </div>
+</div>
+<div class="grafici-container" style="display: flex; justify-content: space-around; margin-top: 50px; margin-bottom: 100px">
+    <div>
+        <h3>Rigori a Sinistra</h3>
+        <canvas id="graficoSinistra"></canvas>
+    </div>
+    <div>
+        <h3>Rigori a Destra</h3>
+        <canvas id="graficoDestra"></canvas>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctxTotal = document.getElementById('graficoTotale').getContext('2d');
+    var graficoTotal = new Chart(ctxTotal, {
+        type: 'pie',
+        data: {
+            labels: ['Sinistra', 'Destra'],
+            datasets: [{
+                label: 'Rigori Calciati',
+                data: [8, 7],
+                backgroundColor: ['#4CAF50', '#0000FF'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            var label = tooltipItem.label || '';
+                            var value = tooltipItem.raw || 0;
+                            var total = 15;
+                            var percent = Math.round((value / total) * 100);
+                            return label + ': ' + value + ' (' + percent + '%)';
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    var ctxSinistra = document.getElementById('graficoSinistra').getContext('2d');
+    var graficoSinistra = new Chart(ctxSinistra, {
+        type: 'pie',
+        data: {
+            labels: ['Gol', 'Sbagliati'],
+            datasets: [{
+                label: 'Rigori a Sinistra',
+                data: [6, 2],
+                backgroundColor: ['#4CAF50', '#F44336'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            var label = tooltipItem.label || '';
+                            var value = tooltipItem.raw || 0;
+                            var total = 8;
+                            var percent = Math.round((value / total) * 100);
+                            return label + ': ' + value + ' (' + percent + '%)';
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    var ctxDestra = document.getElementById('graficoDestra').getContext('2d');
+    var graficoDestra = new Chart(ctxDestra, {
+        type: 'pie',
+        data: {
+            labels: ['Gol', 'Sbagliati'],
+            datasets: [{
+                label: 'Rigori a Destra',
+                data: [5, 2],
+                backgroundColor: ['#4CAF50', '#F44336'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            var label = tooltipItem.label || '';
+                            var value = tooltipItem.raw || 0;
+                            var total = 7;
+                            var percent = Math.round((value / total) * 100);
+                            return label + ': ' + value + ' (' + percent + '%)';
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+
         </div>
     </main>
     <footer>
