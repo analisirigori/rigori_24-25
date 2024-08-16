@@ -65,7 +65,7 @@ grafici_html = f"""
 <div class="grafici-container" style="display: flex; justify-content: space-around; margin-top: 50px; margin-bottom: 100px">
     <div>
     <h3> Rigori Calciati </h3>
-    <canvas id=graficoTotale"></canvas>
+    <canvas id="graficoTotale"></canvas>
     </div>
 </div>
 <div class="grafici-container" style="display: flex; justify-content: space-around; margin-top: 50px; margin-bottom: 100px">
