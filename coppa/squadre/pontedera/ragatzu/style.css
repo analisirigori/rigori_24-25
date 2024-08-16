@@ -90,7 +90,7 @@ h1 {
 .goal {
     align-self: center;
     position: relative;
-    margin-top: auto; /* Push the goal to the bottom */
+    margin-top: 40px;
     margin-bottom: 15px; /* Aggiungi spazio sotto l'immagine della porta */
     width: 100%; /* Assicurati che l'elemento goal sia largo quanto il contenitore principale */
     max-width: 730px; /* Limita la larghezza massima della porta */
