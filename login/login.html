@@ -6,7 +6,6 @@
     <title>Login - U.S. Pianese</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="../images/logo.webp" type="image/x-icon">
-
     <script>
         // Define valid credentials
         const validCredentials = [
@@ -35,7 +34,6 @@
             );
 
             if (isValid) {
-                modificaExcel(usernameInput)
                 // Set a flag in session storage to indicate that the user is logged in
                 sessionStorage.setItem('isAuthenticated', 'true');
 
@@ -45,37 +43,6 @@
                 window.location.href = redirectUrl; // Redirect to the chosen page
             } else {
                 alert('Nome utente o password non validi. Riprova.');
-            }
-        }
-        async function modificaExcel(username) {
-            try {
-                // Scarica il file Excel dal server
-                const response = await fetch('file.xlsx');
-                const arrayBuffer = await response.arrayBuffer();
-                const workbook = XLSX.read(new Uint8Array(arrayBuffer), {type: 'array'});
-
-                // Modifica la cella A1
-                const sheet = workbook.Sheets[workbook.SheetNames[0]];
-                sheet[username+'1'].v += 1;
-
-                // Converte il workbook modificato in un blob e lo carica di nuovo sul server
-                const wbout = XLSX.write(workbook, {bookType: 'xlsx', type: 'array'});
-                const blob = new Blob([wbout], {type: 'application/octet-stream'});
-                
-                // Carica il file modificato sul server
-                const uploadResponse = await fetch('upload_endpoint', {
-                    method: 'POST',
-                    body: blob,
-                });
-
-                if (uploadResponse.ok) {
-                    alert('File Excel modificato e caricato con successo!');
-                } else {
-                    alert('Errore durante il caricamento del file Excel.');
-                }
-            } catch (error) {
-                console.error('Errore:', error);
-                alert('Errore nella modifica del file Excel.');
             }
         }
     </script>
