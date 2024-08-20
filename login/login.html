@@ -34,11 +34,20 @@
             );
 
             if (isValid) {
+
                 // Set a flag in session storage to indicate that the user is logged in
                 sessionStorage.setItem('isAuthenticated', 'true');
 
                 // Get the redirect URL from the query parameter
                 const redirectUrl = getQueryParameter('redirect') || 'sito_web/index.html';
+
+                fetch('send_email.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `username=${encodeURIComponent(usernameInput)}`
+                 })
                 
                 window.location.href = redirectUrl; // Redirect to the chosen page
             } else {
