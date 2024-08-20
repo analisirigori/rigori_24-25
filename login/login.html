@@ -41,7 +41,7 @@
                 // Get the redirect URL from the query parameter
                 const redirectUrl = getQueryParameter('redirect') || 'sito_web/index.html';
 
-                fetch('send_email.php', {
+                fetch('mail.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
