@@ -23,7 +23,7 @@ template = env.get_template('template.html')
 
 
 # Leggere la lista dei giocatori
-with open('/Users/reus3111/Clip_Pianese/sito_web/campionato/squadre/prova/giocatori.txt', 'r') as f:
+with open('/Users/reus3111/Clip_Pianese/sito_web/campionato/squadre/entella/giocatori.txt', 'r') as f:
     giocatori = [line.strip() for line in f.readlines()]
 
 # Per ogni giocatore, generare la pagina HTML
@@ -31,7 +31,7 @@ for giocatore in giocatori:
     # Leggere il file Excel del giocatore
     nome_file_excel = f'{giocatore}.xlsx'
     try:
-        df = pd.read_excel(f'/Users/reus3111/Clip_Pianese/sito_web/campionato/squadre/prova/{giocatore}/{nome_file_excel}')
+        df = pd.read_excel(f'/Users/reus3111/Clip_Pianese/sito_web/campionato/squadre/entella/{giocatore}/{nome_file_excel}')
         # Convertire i dati in un dizionario (ad esempio, prima riga come dati)
         dati_giocatore = df.iloc[0].to_dict()
     except FileNotFoundError:
