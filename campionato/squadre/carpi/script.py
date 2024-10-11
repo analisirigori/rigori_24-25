@@ -20,14 +20,47 @@ env = Environment(loader=FileSystemLoader(template_dir))
 # Carica il template
 template = env.get_template('template.html')
 
+template_squadra = env.get_template('template_squadra.html')
 
+squadra_df = pd.read_csv('/Users/reus3111/Clip_Pianese/sito_web/campionato/squadre/carpi/squadra.csv')
+for _, row in squadra_df.iterrows():
+    nome_squadra = row['squadra']
+    nome_squadra_completo = row['nome_squadra']
+
+    # Filtra i giocatori della squadra corrente
+    #giocatori_squadra = [player for player in players_data if nome_squadra in player['link']]
+
+    # Renderizza il template della squadra con i dati dei giocatori
+    output_squadra = template_squadra.render(
+        nome_squadra_completo=nome_squadra_completo,
+        nome_squadra=nome_squadra,
+        #players=giocatori_squadra
+    )
+
+    # Salvare l'output HTML per la squadra
+    nome_file_squadra_html = f'campionato/squadre/{nome_squadra}/{nome_squadra}.html'
+    with open(nome_file_squadra_html, 'w', encoding='utf-8') as f:
+        f.write(output_squadra)
+
+    print(f'Pagina HTML generata per la squadra {nome_squadra_completo}: {nome_file_squadra_html}')
 
 # Leggere la lista dei giocatori
-with open('/Users/reus3111/Clip_Pianese/sito_web/campionato/squadre/carpi/giocatori.txt', 'r') as f:
-    giocatori = [line.strip() for line in f.readlines()]
-
+giocatori_df = pd.read_csv('/Users/reus3111/Clip_Pianese/sito_web/campionato/squadre/carpi/giocatori.csv')
+players_html = ""
 # Per ogni giocatore, generare la pagina HTML
-for giocatore in giocatori:
+for _, row in giocatori_df.iterrows():
+    giocatore = row['nome_giocatore']
+    cognome = row['cognome']
+    numero = row['numero']
+    nome_completo = row['nome'] + " " + row['cognome']
+    nome_squadra = row['squadra']  # Aggiungi un attributo per il nome della squadra
+    piede = row['piede']
+    
+    players_html = players_html + f'\n\t\t\t<a href="{giocatore}/{giocatore}.html" class="player-button">{cognome} {numero}</a>'
+    
+    
+    
+    
     # Leggere il file Excel del giocatore
     nome_file_excel = f'{giocatore}.xlsx'
     try:
@@ -39,8 +72,7 @@ for giocatore in giocatori:
         continue
     nome_squadra = dati_giocatore['Squadra'];
     # Renderizzare il template con i dati del giocatore
-    output = template.render(nome_giocatore=giocatore, nome_squadra=dati_giocatore['Squadra'], piede_giocatore=dati_giocatore['Piede'])
-
+    output = template.render(nome_giocatore=giocatore, nome_completo=nome_completo,nome_squadra=dati_giocatore['Squadra'], piede_giocatore=dati_giocatore['Piede'])
     
     # Salvare l'output HTML
     nome_file_html = f'/Users/reus3111/Clip_Pianese/sito_web/campionato/squadre/{nome_squadra}/{giocatore}/{giocatore.replace(" ", "_")}.html'
@@ -350,3 +382,13 @@ for giocatore in giocatori:
     # Scrivi il nuovo contenuto HTML in un file
     with open(f"campionato/squadre/{nome_squadra}/{giocatore}/{giocatore}.html", "w") as file:
         file.write(new_html_content)
+
+with open(f'campionato/squadre/{nome_squadra}/{nome_squadra}.html',"r") as file:
+     html_content = file.read()
+insert_point = html_content.find('<div class="players-container">') + len('<div class="players-container">')
+
+new_html_content = html_content[:insert_point] + players_html + html_content[insert_point:]
+
+with open(f'campionato/squadre/{nome_squadra}/{nome_squadra}.html',"w") as file:
+    file.write(new_html_content)
+    
