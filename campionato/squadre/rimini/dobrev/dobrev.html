@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erik Gerbi</title>
+    <title>Kristian Dobrev</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="../../../../images/logo.webp" type="image/x-icon">
     <script>
@@ -13,7 +13,7 @@
             const isAuthenticated = sessionStorage.getItem('isAuthenticated');
             if (!isAuthenticated) {
                 // Redirect to login page if not authenticated
-                window.location.href = '../../../../login/login.html?redirect=../campionato/squadre/carpi/gerbi/gerbi.html';
+                window.location.href = '../../../../login/login.html?redirect=../campionato/squadre/rimini/dobrev/dobrev.html';
             }
         }
     </script>
@@ -33,25 +33,25 @@
         </nav>
     </header>
     <main>
-        <h1>Erik Gerbi</h1>
-        <img src="gerbi.webp" style="width: 5%;">
+        <h1>Kristian Dobrev</h1>
+        <img src="dobrev.webp" style="width: 5%;">
         <div class="container">
             <h2 style="text-align: center; font-weight: bolder;">
-                Piede di Calcio: Destro
+                Piede di Calcio: Sinistro
             </h2>
         </div>
         <div class="back_arrow">
             <p style="margin-bottom: 40px;">Clicca la freccia per tornare alla selezione dei giocatori</p>
-            <a href="../carpi.html">
+            <a href="../rimini.html">
                 <img src="../../../../images/back_arrow.png" style="width: 10%;">
             </a>
         </div>
         <div class="goal">
             <img src="../../../../images/porta.png" alt="Goal" width="730" height="244">
             <div id="balls-container" class="balls-container">
-            <a href="https://youtu.be/G60mj95hymY" target="_blank" class="ball-link1">
-                <div class="ball" style="position: absolute; top: 0.0%; left: -10.0%;">
-                    <img src="../../../../images/missed.png" alt="Football">
+            <a href="https://youtu.be/DlCR_ozwHIs" target="_blank" class="ball-link1">
+                <div class="ball" style="position: absolute; top: 12.0%; left: 10.333333333333334%;">
+                    <img src="../../../../images/football.png" alt="Football">
                     <span class="ball-number" style="color: black;">1</span>
                 </div>
             </a>
@@ -75,12 +75,12 @@
     
         <tr>
             <td data-label="#" style="border: 1px solid #ddd; padding: 8px;">1</td>
-            <td data-label="Partita" style="border: 1px solid #ddd; padding: 8px;">Braila-ASU Poli</td>
-            <td data-label="Minuto" style="border: 1px solid #ddd; padding: 8px;">72</td>
-            <td data-label="Esito" style="border: 1px solid #ddd; padding: 8px; background-color: #F44336; color: #fff;">Sbagliato</td>
-            <td data-label="Risultato" style="border: 1px solid #ddd; padding: 8px;">2-2</td>
+            <td data-label="Partita" style="border: 1px solid #ddd; padding: 8px;">CSKA Sofia-Slavia Sofia</td>
+            <td data-label="Minuto" style="border: 1px solid #ddd; padding: 8px;">120</td>
+            <td data-label="Esito" style="border: 1px solid #ddd; padding: 8px; background-color: #4CAF50; color: #fff;">Trasformato</td>
+            <td data-label="Risultato" style="border: 1px solid #ddd; padding: 8px;">Rigori</td>
             <td data-label="Video" style="border: 1px solid #ddd; padding: 8px;">
-                <a href="https://youtu.be/G60mj95hymY" target="_blank" style="text-decoration: none; color: #000;">link</a>
+                <a href="https://youtu.be/DlCR_ozwHIs" target="_blank" style="text-decoration: none; color: #000;">link</a>
             </td>
         </tr>
         </tbody></table>
@@ -96,11 +96,11 @@
         <div class="grafici-container" style="display: flex; justify-content: space-around; margin-top: 50px; margin-bottom: 100px">
             <div>
                 <h3>Rigori ad Aprire</h3>
-                <p style="margin-top:20px;">Non ci sono rigori ad Aprire</p>
+                <canvas id="graficoAprire"></canvas>
             </div>
             <div>
                 <h3>Rigori a Chiudere</h3>
-                <canvas id="graficoChiudere"></canvas>
+                <p style="margin-top:20px;">Non ci sono rigori a chiudere</p>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -114,7 +114,7 @@
                     labels: ['Chiudere', 'Aprire'],
                     datasets: [{
                         label: 'Rigori Calciati',
-                        data: [1, 0],
+                        data: [0, 1],
                         backgroundColor: ['#4CAF50', '#0000FF'],
                     }]
                 },
@@ -144,43 +144,44 @@
                 plugins: [ChartDataLabels]
             });
         
-        var ctxChiudere = document.getElementById('graficoChiudere').getContext('2d');
-        var graficoChiudere = new Chart(ctxChiudere, {
-            type: 'pie',
-            data: {
-                labels: ['Gol', 'Sbagliati'],
-                datasets: [{
-                    label: 'Rigori a Chiudere',
-                    data: [0, 1],
-                    backgroundColor: ['#4CAF50', '#F44336'],
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        enabled : false
-                    },
-                    datalabels: {
-                        color: '#fff',
-                        font: {
-                            size: 18,  // Imposta la dimensione del font delle etichette
-                            weight: 'bold' // Puoi anche aggiungere altre proprietà come il peso del font
+    
+            var ctxAprire = document.getElementById('graficoAprire').getContext('2d');
+            var graficoAprire = new Chart(ctxAprire, {
+                type: 'pie',
+                data: {
+                    labels: ['Gol', 'Sbagliati'],
+                    datasets: [{
+                        label: 'Rigori ad Aprire',
+                        data: [1, 0],
+                        backgroundColor: ['#4CAF50', '#F44336'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
                         },
-                        formatter: function(value, context) {
-                            var total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                            var percent = Math.round((value / total) * 100);
-                            return value + ' (' + percent + '%)';
+                        tooltip: {
+                            enabled : false
+                        },
+                        datalabels: {
+                            color: '#fff',
+                            font: {
+                                size: 18,  // Imposta la dimensione del font delle etichette
+                                weight: 'bold' // Puoi anche aggiungere altre proprietà come il peso del font
+                            },
+                            formatter: function(value, context) {
+                                var total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                                var percent = Math.round((value / total) * 100);
+                                return value + ' (' + percent + '%)';
+                            }
                         }
                     }
-                }
-            },
-            plugins: [ChartDataLabels]
-        });
+                },
+                plugins: [ChartDataLabels]
+            });
         </script>
     
     </div>

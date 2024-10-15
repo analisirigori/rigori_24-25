@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - U.S. Pianese</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.webp" type="image/x-icon">
+
+    <script>
+        // Funzione che controlla se l'utente ha un token valido nel localStorage
+        function isAuthenticated() {
+            const token = localStorage.getItem('authToken');
+            if (!token) return false;
+
+            // Decodifica il payload del JWT e controlla la scadenza
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const expiry = payload.exp;
+
+            // Verifica se il token è scaduto
+            if (Date.now() >= expiry * 1000) {
+                localStorage.removeItem('authToken');  // Rimuove il token scaduto
+                return false;
+            }
+            return true;
+        }
+
+        // Funzione per salvare il token JWT dalla URL e memorizzarlo nel localStorage
+        function saveTokenFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+
+            if (token) {
+                // Salva il token nel localStorage
+                localStorage.setItem('authToken', token);
+
+                // Rimuove il parametro token dall'URL per pulizia
+                const newUrl = window.location.href.split('?')[0];
+                window.history.replaceState(null, '', newUrl);
+            }
+        }
+
+        // Funzione per reindirizzare l'utente alla pagina di login Flask se non autenticato
+        function checkLogin() {
+            if (!isAuthenticated()) {
+                const loginUrl = 'http://127.0.0.1:5000';  // Sostituisci con l'URL della tua app Flask
+                const redirectUrl = 'https://rigoripianese.github.io/sito_web/';  // URL della pagina corrente su GitHub Pages
+                window.location.href = loginUrl + "?redirect_url=" + encodeURIComponent(redirectUrl);
+            }
+        }
+
+        // Esegui al caricamento della pagina
+        document.addEventListener('DOMContentLoaded', function() {
+            saveTokenFromUrl();
+            checkLogin();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo Pianese">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Torna alla Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Accedi</h1>
+        <p>Verifica se hai accesso a questa pagina.</p>
+    </main>
+    <footer>
+        <p>&copy; Fabio Rossi e Umberto Di Giacomo</p>
+    </footer>
+</body>
+</html>
