@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { date: 3, team: 'Torres', logo: '../campionato/loghi/torres.png' },
             { date: 10, team: 'Vis Pesaro', logo: '../campionato/loghi/vispesaro.png' },
             { date: 17, team: 'Pontedera', logo: '../campionato/loghi/pontedera.png' },
-            { date: 24, team: 'Legnago Salus', logo: '../campionato/loghi/legnano.png' }
+            { date: 24, team: 'Legnago Salus', logo: '../campionato/loghi/legnago.png' }
         ] },
         { name: 'Dicembre', days: 31, matches: [
             { date: 1, team: 'Pineto', logo: '../campionato/loghi/pineto.png' },
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { date: 30, team: 'Pontedera', logo: '../campionato/loghi/pontedera.png' }
         ] },
         { name: 'Aprile', days: 30, matches: [
-            { date: 6, team: 'Legnago Salus', logo: '../campionato/loghi/legnano.png' },
+            { date: 6, team: 'Legnago Salus', logo: '../campionato/loghi/legnago.png' },
             { date: 13, team: 'Pineto', logo: '../campionato/loghi/pineto.png' },
             { date: 19, team: 'Ternana', logo: '../campionato/loghi/ternana.png' },
             { date: 27, team: 'Arezzo', logo: '../campionato/loghi/arezzo.png' }
