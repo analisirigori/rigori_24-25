@@ -1,0 +1,57 @@
+<!-- template_squadra.html -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternana Calcio - Giocatori</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../../../images/logo.webp" type="image/x-icon">
+    <script>
+        // Check if the user is authenticated
+        window.onload = function() {
+            const isAuthenticated = sessionStorage.getItem('isAuthenticated');
+            if (!isAuthenticated) {
+                // Redirect to login page if not authenticated
+                window.location.href = '../../../login/login.html?redirect=../campionato/squadre/ternana/ternana.html';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../../../images/logo.webp" alt="Logo Pianese">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../../../index.html">Torna alla Home</a></li>
+                <li><a href="../../campionato.html">Campionato</a></li>
+                <li><a href="../../../coppa/coppa.html">Coppa</a></li>
+                <li><a href="../../../calendario/calendario.html">Calendario</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="logosquadra">
+            <img src="../../loghi/ternana.png" alt="Logo ternana" style="width: 16%;">
+        </div>
+        <h1>Giocatori Ternana Calcio</h1>
+        <div class="players-container">
+			<a href="casasola/casasola.html" class="player-button">Casasola 15</a>
+			<a href="cianci/cianci.html" class="player-button">Cianci 71</a>
+			<a href="cicerelli/cicerelli.html" class="player-button">Cicerelli 10</a>
+			<a href="curcio/curcio.html" class="player-button">Curcio 11</a>
+			<a href="deboer/deboer.html" class="player-button">De Boer 8</a>
+			<a href="donnarumma/donnarumma.html" class="player-button">Donnarumma 99</a>
+			<a href="ferrante/ferrante.html" class="player-button">Ferrante 9</a>
+			<a href="ferrara/ferrara.html" class="player-button">Ferrara 23</a>
+			<a href="tito/tito.html" class="player-button">Tito 3</a>
+			<a href="viviani/viviani.html" class="player-button">Viviani 77</a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy;Fabio Rossi e Umberto Di Giacomo</p>
+    </footer>
+</body>
+</html>
