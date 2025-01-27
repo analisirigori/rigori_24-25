@@ -142,29 +142,32 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .logo img {
-        max-width: 80px;
-    }
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
+    .profiles-container {
+        flex-direction: column; /* Disporre in colonna */
+        align-items: center; /* Centrare i bottoni */
+        gap: 20px; /* Maggiore spazio tra i bottoni */
     }
 
-    nav ul li {
-        width: 100%;
-        text-align: center;
+    .linkedin-profile, .CV {
+        width: 90%; /* Ridurre la larghezza per adattarsi meglio */
+        text-align: center; /* Centrare il contenuto */
+        padding: 12px 10px; /* Aumentare il padding per un aspetto più arioso */
+    }
+
+    nav ul {
+        flex-direction: column; /* Disporre i link del menu in colonna */
+        gap: 15px; /* Aumentare lo spazio tra gli elementi */
     }
 
     nav ul li a {
-        padding: 12px;
-        font-size: 1rem;
-    }
-
-    .profiles-container {
-        gap: 15px;
+        width: 100%; /* Rendi i link del menu più larghi */
+        text-align: center; /* Centrare il testo */
+        padding: 12px; /* Aumenta il padding per migliorare la cliccabilità */
     }
 
     footer {
-        font-size: 0.8rem;
+        font-size: 0.8rem; /* Ridurre leggermente il font */
+        padding: 10px; /* Ridurre il padding per guadagnare spazio */
     }
 }
+
