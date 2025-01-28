@@ -45,7 +45,7 @@ nav ul li a {
     font-weight: bold;
     padding: 12px 25px;
     border-radius: 5px;
-    background-color: #002366; /* Blu scuro di default */
+    /* background-color: #002366; Blu scuro di default */
     transition: background-color 0.3s, transform 0.3s;
 }
 
